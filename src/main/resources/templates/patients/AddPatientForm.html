@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" xmlns:th = "http://www.thymeLeaf.org">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>MediSync</title>
+</head>
+
+<body>
+
+
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+          <div> <a href="#" class="nav_logo"><img src="./images/logowhite-01.png" alt=""></a>
+            <div class="nav_list">
+              <a href="./index.html" class="nav_link"> <img src="./images/Group 36.png" alt="" width="15px"> <span
+                  class="nav_name">Dashboard</span> </a>
+              <a href="./list-patients.html" class="nav_link"> <img src="./images/Layer_1.png" alt="" width="15px"> <span
+                  class="nav_name">Patient</span> </a>
+              <a href="#" class="nav_link"> <img src="./images/Group 2.png" alt="" width="15px"> <span
+                  class="nav_name">Doctors</span> </a>
+              <a href="./blood.html" class="nav_link"> <img src="./images/Vector.png" alt="" width="10px"> <span
+                  class="nav_name">Blood</span> </a>
+              <a href="#" class="nav_link"> <img src="./images/Layer_1 (1).png" alt="" width="20px"> <span
+                  class="nav_name">Ambulance</span> </a>
+              <a href="./blog.html" class="nav_link"> <img src="./images/Group 36.png" alt="" width="15px"> <span
+                  class="nav_name">Blogs</span> </a>
+            </div>
+          </div> <a href="./website.html" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+              class="nav_name">Logout</span>
+          </a>
+        </nav>
+      </div>
+    
+      <div class="profile">
+        <div class="name">Shraddha</div>
+        <img src="./images/shraddha.jpg" alt="" width="45x" height="45px"
+          style="border-radius: 50%; border: 0.5px solid #d9d9d9;">
+      </div>
+
+
+  <form action="#" th:action="@{/patients/save}" 
+  					th:object="${patient}" method="POST">
+  			<!-- we have used the "${patient}" vanne object name in PatientController-->
+    <div class="opening" id="form-title">
+      <h4>Add <span style="color: var(--secondary-color);">Patient</span> Details</h4>
+    </div>
+    <br>
+    <div class="mb-2">
+      <label for="exampleName" class="form-label">Full Name</label>
+      <input type="text" class="form-control sub-heading" id="exampleInputName" width="100"
+        th:field="*{fullName}" placeholder="Enter your Full Name" required>
+    </div>
+    <div class="mb-2">
+        <label for="exampleInputEmail1" class="form-label">Email Address</label>
+        <input type="email" class="form-control sub-heading" id="exampleInputEmail1" width="100"
+          th:field="*{email}" placeholder="Enter your Email Address" aria-describedby="emailHelp" required>
+      </div>
+      <div class="mb-2">
+        <label for="exampleInputNumber" class="form-label">Phone No.</label>
+        <input type="tel" class="form-control sub-heading" id="exampleInputNumber" width="100"
+          th:field="*{phone}" placeholder="Enter your Phone Number" aria-describedby="phoneHelp" required>
+      </div>
+      <div class="mb-2">
+        <label for="exampleInputNumber" class="form-label">Available Appoitment Dates</label>
+      <!-- <input type="text" class="form-control sub-heading" id="from-datepicker" width="100"
+      placeholder="Book your appointment" required/>   -->
+      <input type="text" class="form-control sub-heading" id="exampleInputName" width="100"
+        th:field="*{date}" placeholder="Book your appointment" required>
+    </div>
+      <div class="mb-2">
+        <label for="exampleInputDesc" class="form-label">Describe your disease</label>
+        <textarea class="form-control sub-heading" id="textAreaExample" rows="4" th:field="*{disease}" placeholder="Tell something about your disease" required></textarea>
+        </div>
+    
+    <button type="submit" >Save</button>
+  
+  <hr>
+  <a th:href="@{/patients/list}" style="text-decoration=none">See the appointment list</a>
+<!-- yo chai admin ko page ma matra rakhne!! -->
+
+  </form>
+
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script> 
+    <script> 
+        $( document ).ready(function() {     
+        $("#from-datepicker").datepicker({          
+        format: 'yyyy-mm-dd' //can also use format: 'dd-mm-yyyy'     
+        });      
+        });  
+        </script>
+  <script src="index.js"></script>
+</body>
+
+
+</html>
