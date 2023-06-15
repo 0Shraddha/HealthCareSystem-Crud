@@ -68,6 +68,14 @@ public String savePatinet(@ModelAttribute("patient") Patient thePatient) {
 }
 	
 	
+@GetMapping("/delete")
+public String delete(@RequestParam("patientId")int theId) {
+	//delete the patient
+	patientService.deleteById(theId);
+	
+	//redirect to the /patient/list
+	return "redirect:/patients/list";
+}
 }
 
 
