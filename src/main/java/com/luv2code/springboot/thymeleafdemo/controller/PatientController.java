@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.ArrayList;
@@ -44,6 +45,16 @@ public String showFormForAdd(Model theModel) {
 	Patient thePatient = new Patient();
 	theModel.addAttribute("patient", thePatient);
 	
+	return "patients/AddPatientForm";
+}
+
+@GetMapping("/showFormForUpdate")
+public String showFormForUpdate(@RequestParam("patientId")int theId, Model theModel) {
+	//get the patient from the service
+	Patient thePatient = patientService.findById(theId);
+	//set the patient in the model to pre populate the form
+	theModel.addAttribute("patient",thePatient);
+	//send over to our form
 	return "patients/AddPatientForm";
 }
 @PostMapping("/save")

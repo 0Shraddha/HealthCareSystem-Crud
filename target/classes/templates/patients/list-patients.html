@@ -81,6 +81,10 @@
             <td th:text="${tempEmployee.phone}" />	
             <td th:text="${tempEmployee.date}" />	
             <td th:text="${tempEmployee.disease}" />	
+            <td>
+              <a th:href="@{/patients/showFormForUpdate(patientId=${tempEmployee.id})}" class="btn btn-outline-primary btn-sm">Update</a>
+              <a th:href="@{/patients/showFormForUpdate(patientId=${tempEmployee.id})}" class="btn btn-outline-danger btn-sm">Delete</a>
+              </td>
             
           </tr>
         </tbody>

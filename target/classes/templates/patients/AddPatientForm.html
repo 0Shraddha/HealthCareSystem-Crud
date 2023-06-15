@@ -47,6 +47,10 @@
           style="border-radius: 50%; border: 0.5px solid #d9d9d9;">
       </div>
 
+<!-- ALERTS RAKHNU PARXAA -->
+<div class="alert alert-warning alert-dismissible fade show lmargin" role="alert">
+  Your appointment was successfully booked.
+</div>
 
   <form action="#" th:action="@{/patients/save}" 
   					th:object="${patient}" method="POST">
@@ -54,7 +58,11 @@
     <div class="opening" id="form-title">
       <h4>Add <span style="color: var(--secondary-color);">Patient</span> Details</h4>
     </div>
+     <!-- Add hidden form field to handle the update -->
+     <input type="hidden" th:field="*{id}">
     <br>
+    
+
     <div class="mb-2">
       <label for="exampleName" class="form-label">Full Name</label>
       <input type="text" class="form-control sub-heading" id="exampleInputName" width="100"
@@ -104,8 +112,6 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script> 
     <script> 
@@ -117,6 +123,4 @@
         </script>
   <script src="index.js"></script>
 </body>
-
-
 </html>
