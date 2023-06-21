@@ -8,7 +8,8 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="index.css">
+  
+   <link rel="stylesheet" th:href="@{/css/index.css}">
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -20,25 +21,33 @@
 
     <div class="l-navbar" id="nav-bar">
         <nav class="nav">
-          <div> <a href="#" class="nav_logo"><img src="./images/logowhite-01.png" alt=""></a>
-            <div class="nav_list">
-              <a href="./index.html" class="nav_link"> <img src="./images/Group 36.png" alt="" width="15px"> <span
-                  class="nav_name">Dashboard</span> </a>
-              <a href="./list-patients.html" class="nav_link"> <img src="./images/Layer_1.png" alt="" width="15px"> <span
-                  class="nav_name">Patient</span> </a>
-              <a href="#" class="nav_link"> <img src="./images/Group 2.png" alt="" width="15px"> <span
-                  class="nav_name">Doctors</span> </a>
-              <a href="./blood.html" class="nav_link"> <img src="./images/Vector.png" alt="" width="10px"> <span
-                  class="nav_name">Blood</span> </a>
-              <a href="#" class="nav_link"> <img src="./images/Layer_1 (1).png" alt="" width="20px"> <span
-                  class="nav_name">Ambulance</span> </a>
-              <a href="./blog.html" class="nav_link"> <img src="./images/Group 36.png" alt="" width="15px"> <span
-                  class="nav_name">Blogs</span> </a>
-            </div>
-          </div> <a href="./website.html" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
-              class="nav_name">Logout</span>
-          </a>
-        </nav>
+			<div>
+				<a href="#" class="nav_logo"><img
+					src="./images/logowhite-01.png" alt=""></a>
+				<div class="nav_list">
+					<a th:href="@{/patients/showAdminIndex}" class="nav_link"> <img
+						src="./images/Group 36.png" alt="" width="16px"> <span
+						class="nav_name">Dashboard</span>
+					</a> <a href="#" class="nav_link active"> <img
+						src="./images/Layer_1.png" alt="" width="16px"> <span
+						class="nav_name">Patient</span>
+					</a> <a th:href="@{/patients/...}" class="nav_link"> <img src="./images/Group 2.png"
+						alt="" width="16px"> <span class="nav_name">Doctors</span>
+					</a> <a th:href="@{/patients/showBloodForAdmin}" class="nav_link"> <img src="./images/Vector.png"
+						alt="" width="12px"> <span class="nav_name">Blood</span>
+					</a> <a th:href="@{/patients/showAmbulanceForAdmin}" class="nav_link"> <img
+						src="./images/Layer_1 (1).png" alt="" width="16px"> <span
+						class="nav_name">Ambulance</span>
+					</a> <a th:href="@{/patients/showBlog}" class="nav_link"> <img
+						src="./images/Layer_1 (2).png" alt="" width="16px"> <span
+						class="nav_name">Blogs</span>
+					</a>
+				</div>
+			</div>
+			<a href="./website.html" class="nav_link"> <i
+				class='bx bx-log-out nav_icon'></i> <span class="nav_name">Logout</span>
+			</a>
+		</nav>
       </div>
     
       <div class="profile">
@@ -48,20 +57,21 @@
       </div>
 
 <!-- ALERTS RAKHNU PARXAA -->
-<div class="alert alert-warning alert-dismissible fade show lmargin" role="alert">
-  Your appointment was successfully booked.
-</div>
-
+    <!-- <div class="alert alert-warning alert-dismissible fade show lmargin" role="alert">
+        Your appointment was successfully booked.
+      </div>
+       -->
   <form action="#" th:action="@{/patients/save}" 
   					th:object="${patient}" method="POST">
   			<!-- we have used the "${patient}" vanne object name in PatientController-->
     <div class="opening" id="form-title">
       <h4>Add <span style="color: var(--secondary-color);">Patient</span> Details</h4>
     </div>
-     <!-- Add hidden form field to handle the update -->
-     <input type="hidden" th:field="*{id}">
-    <br>
     
+    <!-- Add hidden form field to handle the update -->
+    <input type="hidden" th:field="*{id}">
+    <br>
+
 
     <div class="mb-2">
       <label for="exampleName" class="form-label">Full Name</label>
@@ -80,20 +90,23 @@
       </div>
       <div class="mb-2">
         <label for="exampleInputNumber" class="form-label">Available Appoitment Dates</label>
-      <!-- <input type="text" class="form-control sub-heading" id="from-datepicker" width="100"
-      placeholder="Book your appointment" required/>   -->
-      <input type="text" class="form-control sub-heading" id="exampleInputName" width="100"
-        th:field="*{date}" placeholder="Book your appointment" required>
+      <input type="text" class="form-control sub-heading" id="from-datepicker" width="100" th:field="*{date}"
+      placeholder="Book your appointment" required/>
+        <!-- <select class="form-select form-select-sm form-control sub-heading" width="100"  aria-label=".form-select-sm example" required >
+          <option selected>Available Doctors with Date</option>
+          <option value="th:value="${option1Value}"">Dr.Rajesh Maharjan -12th July,2023 </option>
+          <option value="th:value="${option1Value}"">Dr.Shsir Pradhan -15th July,2023 </option>
+          <option value="th:value="${option1Value}"">Dr.Sajen Tul -16th July,2023 </option>
+        </select> -->
     </div>
       <div class="mb-2">
         <label for="exampleInputDesc" class="form-label">Describe your disease</label>
         <textarea class="form-control sub-heading" id="textAreaExample" rows="4" th:field="*{disease}" placeholder="Tell something about your disease" required></textarea>
         </div>
     
-    <button type="submit" >Save</button>
-  
-  <hr>
-  <a th:href="@{/patients/list}">See the appointment list</a>
+    <button type="submit" class="btn btn-primary btn-sm mb-3">Submit</button>
+  <br>
+  <a th:href="@{/patients/list}" style="text-decoration:none">See the appointment list</a>
 <!-- yo chai admin ko page ma matra rakhne!! -->
 
   </form>
@@ -112,6 +125,8 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.min.js"></script> 
     <script> 
@@ -123,4 +138,6 @@
         </script>
   <script src="index.js"></script>
 </body>
+
+
 </html>
